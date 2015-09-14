@@ -10,14 +10,14 @@ public class DrawTitleMap : MonoBehaviour {
 	
 		map = GetComponent<tileMap> ();
 
-		for (var c=-4; c<=4;c++)
+		for (var x=0; x<17; x++)
 		{
-			for (var i=-8; i<=8; i++) {
-				if (map.tiles[c+4,i+8]==0){
-					Instantiate (Resources.Load ("tile"), new Vector3 (i, c, 0), Quaternion.identity);
+			for (var y=0; y<21; y++) {
+				if (map.tiles[x,y]==0){
+					Instantiate (Resources.Load ("blTile"), new Vector3 (x, y, 0), Quaternion.identity);
 				}
 				else{
-					Instantiate (Resources.Load ("tile_oc"), new Vector3 (i, c, 0), Quaternion.identity);
+					Instantiate (Resources.Load ("tile"), new Vector3 (x, y, 0), Quaternion.identity);
 				}
 			}
 		}

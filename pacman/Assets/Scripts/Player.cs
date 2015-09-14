@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-	public float velocidade = 5f;
+	public float velocidade = 7f;
 	public float tileSize = 1f;
 
 	private Vector3 pos;
@@ -94,21 +94,21 @@ public class Player : MonoBehaviour {
 
 	void setTileMapPositions(int pDir){
 
-		MapCurrentX = (int)pos.x + 8;
-		MapNextX =  ((int)pos.x + ((int)tileSize * pDir) + 8);
-		MapCurrentY = (int)pos.y + 4;
-		MapNextY = ((int)pos.y + ((int)tileSize * pDir)+ 4);
+		MapCurrentX = (int)pos.x;
+		MapNextX =  ((int)pos.x + ((int)tileSize * pDir));
+		MapCurrentY = (int)pos.y;
+		MapNextY = ((int)pos.y + ((int)tileSize * pDir));
 
 	}
 
 	bool isOcupied(int x, int y){
 
 		//check if title is walkable or not
-		if ( y > 8 || x > 16 || y < 0 || x < 0) {
+		if ( y > 20  || x > 16 || y < 0 || x < 0) {
 			return true;
 		}
 
-		if( map.tiles[y,x] == 1){
+		if( map.tiles[x,y] == 1){
 			return true;
 		}
 
@@ -119,13 +119,13 @@ public class Player : MonoBehaviour {
 
 		//check if player hits boundaries
 		if (pAxis == 1) {
-			if ((position <= -8 && direction == -1) || (position >= 8 && direction == 1)){
+			if ((position <= 0 && direction == -1) || (position >= 16 && direction == 1)){
 				return true;
 			}
 		}
 
 		if (pAxis == 2) {
-			if ((position <= -4 && direction == -1) || (position >= 4 && direction == 1)){
+			if ((position <= 0 && direction == -1) || (position >= 20 && direction == 1)){
 				return true;
 			}
 		}
